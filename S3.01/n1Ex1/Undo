@@ -1,0 +1,102 @@
+package S3_01;
+
+import java.util.ArrayList;
+
+
+public class Undo {
+
+    private String nombre;
+    private ArrayList<String> comandes;
+    private static Undo undo;
+    
+    
+    //CONSTRUCTORS
+    
+    private Undo(String nombre){
+        
+        this.nombre = nombre;
+        comandes = new ArrayList<>();
+        
+        
+    }
+    
+    
+    private Undo() {
+      
+         
+    }
+    
+    
+    
+    //GETTERS SETTERS
+
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public ArrayList<String> getComandes() {
+        return comandes;
+    }
+
+    public void setComandes(ArrayList<String> comandes) {
+        this.comandes = comandes;
+    }
+
+    public static Undo getUndo() {
+        return undo;
+    }
+
+    public static void setUndo(Undo undo) {
+        Undo.undo = undo;
+    }
+    
+    
+    
+    //METODES CLASSE
+
+    
+    public void guardarComando(String comando){
+        
+        comandes.add(comando);
+        
+        
+    }
+    
+    
+    public void eliminarComando(String comando){
+        
+        comandes.remove(comando);
+        
+    }
+    
+    
+    public void llistaComandos(){
+        
+        for (String llistaComandos : comandes) {
+            
+            System.out.println(llistaComandos);
+        }
+        
+    }
+    
+    
+   
+    public static Undo getSingletonInstance(String nombre) {
+        
+        if (undo == null){
+            undo = new Undo(nombre);
+        }
+        else{
+            System.out.println("No se puede crear el objeto "+ nombre + " porque ya existe un objeto de la clase Undo");
+        }
+        
+        return undo;
+    }
+    
+      
+}
