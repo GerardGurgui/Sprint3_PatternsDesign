@@ -1,0 +1,108 @@
+package S3_01;
+
+import java.util.Scanner;
+
+public class App {
+    
+    public static void main(String[] args) {
+        
+        Undo obj1 = Undo.getSingletonInstance("comando1");
+        Undo obj2 = Undo.getSingletonInstance("comando2");
+        
+        System.out.println(obj1.getNombre()); 
+        System.out.println(obj2.getNombre());
+     
+        menu(obj1);
+        
+    }
+    
+    
+    public static void menu(Undo obj1){
+        
+        int opcioUser;
+        String comando;
+        
+        
+        do {            
+            
+            System.out.println("0- Sortir");
+            System.out.println("1- afegir comando");
+            System.out.println("2- eliminar comando");
+            System.out.println("3- llistar comandos");
+            
+            opcioUser = demanarNum("introdueixi una opció");
+            
+            switch(opcioUser){
+                
+                case 1:
+                    
+                    System.out.println("Afegir comando");
+                    
+                    comando = demanarText("comando:");
+                    obj1.guardarComando(comando);
+                    
+                    break;
+                
+                case 2:
+                    
+                    System.out.println("llistar comandes");
+                    
+                    obj1.llistaComandos();
+                    
+                    
+                    break;
+                
+                
+                
+            }
+            
+            
+            
+            
+            
+            
+        } while (opcioUser != 0);
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    public static int demanarNum(String missatge){
+        
+        
+        Scanner input = new Scanner(System.in);
+        
+        int num;
+        
+        System.out.println(missatge);
+        
+        num = input.nextInt();
+        
+        return num;
+        
+    }    
+    
+    
+    
+    public static String demanarText(String missatge){
+        
+        Scanner input = new Scanner(System.in);
+        
+        String text;
+        
+        System.out.println(missatge);
+        
+        text = input.nextLine();
+        
+        return text;
+        
+        
+    }
+}
+
+
