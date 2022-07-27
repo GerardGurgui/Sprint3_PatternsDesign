@@ -1,11 +1,17 @@
 package S3_01;
 
+package Backend.Sprint3_patternsDesign.n1Ex1;
+
+
 import java.util.ArrayList;
 
+/*Singleton: utilizat per exemple per asegurar una única conexió a una base de dades.
+o també per compartir informació/dades comuns entre varios objectes amb una sola instància,
+i no una instància per cada objecte. Millora considerabble de rendiment sobretot en memoria*/
 
 public class Undo {
 
-    private String nombre;
+    private String nom;
     private ArrayList<String> comandes;
     private static Undo undo;
     
@@ -14,29 +20,22 @@ public class Undo {
     
     private Undo(String nombre){
         
-        this.nombre = nombre;
+        this.nom = nombre;
         comandes = new ArrayList<>();
         
         
     }
     
     
-    private Undo() {
-      
-         
-    }
-    
-    
-    
     //GETTERS SETTERS
 
     
     public String getNombre() {
-        return nombre;
+        return nom;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nom = nombre;
     }
 
     public ArrayList<String> getComandes() {
@@ -58,12 +57,10 @@ public class Undo {
     
     
     //METODES CLASSE
-
     
     public void guardarComando(String comando){
         
         comandes.add(comando);
-        
         
     }
     
@@ -85,14 +82,15 @@ public class Undo {
     }
     
     
-   
-    public static Undo getSingletonInstance(String nombre) {
+   //Metode Singletone: static per poder accedir sense tenir que crear cap instància de la classe
+    
+    public static Undo getSingletonInstance(String nom) {
         
         if (undo == null){
-            undo = new Undo(nombre);
+            undo = new Undo(nom);
         }
         else{
-            System.out.println("No se puede crear el objeto "+ nombre + " porque ya existe un objeto de la clase Undo");
+            System.out.println("No es pot crear el objecte " +nom+ " perque ja existeix un objecte de la clase Undo");
         }
         
         return undo;
