@@ -18,7 +18,7 @@ public class App {
 
         formaPago = menuPago();
 
-        tienda.llamarPasarelaPago(formaPago);
+        tienda.llamarOtenerPago(formaPago);
 
 
     }
