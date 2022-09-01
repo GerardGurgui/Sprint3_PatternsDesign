@@ -13,7 +13,7 @@ public class Tienda {
 
     }
 
-    public void llamarPasarelaPago(FormaPago formaPago){
+    public void llamarObtenerPago(FormaPago formaPago){
 
         ObtenerPago obtenerPago = new ObtenerPago(this, formaPago);
         obtenerPago.comprobarPago();
